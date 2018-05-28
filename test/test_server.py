@@ -1,4 +1,4 @@
-from Server import Server
+from Server.Server import Server
 import pytest
 
 """

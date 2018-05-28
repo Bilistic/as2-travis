@@ -1,14 +1,13 @@
-from Server.Server import Server
+from Server.Server import DataAnalysis
 import pytest
 
 """
 tests sentiment analysis on server.
 """
 def test_sentiment():
-    sent_scorer = Server.DataAnalysis()
     obj = {'length': 80, 'method': 'reddit',
            'text': 'I m A Democrat And The Left s Russia Gaslighting Scares Me More Than Trump Does'}
-    ans = sent_scorer.analyze_sentiment(obj)
+    ans = DataAnalysis.analyze_sentiment(obj)
     assert int(ans.sentiment) == 0.25
 
 
@@ -16,8 +15,7 @@ def test_sentiment():
 tests cleaning text on server.
 """
 def test_twitter():
-    sent_scorer = Server.DataAnalysis()
     sentence = "[Dirty-] sentence that (/needs/) {cleaning}"
-    ans = sent_scorer.clean(sentence)
+    ans = DataAnalysis.clean(sentence)
     assert ans == "Dirty sentence that needs cleaning"
 
